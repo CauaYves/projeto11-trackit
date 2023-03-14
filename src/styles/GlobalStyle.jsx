@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 		border: 0;
 		font-size: 100%;
         font-family: 'Lexend Deca', sans-serif;
-
+        box-sizing: border-box;
 		vertical-align: baseline;
 	}
 	/* HTML5 display-role reset for older browsers */
