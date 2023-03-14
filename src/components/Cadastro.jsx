@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 import logo from '../img/logo.png'
 
-export default function Login() {
+export default function Cadastro() {
     return (
         <LoginContainer>
             <LoginBox>
@@ -11,16 +11,24 @@ export default function Login() {
 
                 <FormBox>
                     <label htmlFor="iName">
-                        <input type="email" id="iName" placeholder='email' />
+                        <input type="email" id="iName" placeholder='email' required />
                     </label>
 
                     <label htmlFor="iPassword">
-                        <input type="password" id="iPassword" placeholder='senha' />
+                        <input type="password" id="iPassword" placeholder='senha' required />
+                    </label>
+
+                    <label htmlFor="iName">
+                        <input type="text" id="iName" placeholder='nome' required />
+                    </label>
+
+                    <label htmlFor="iFoto">
+                        <input type="url" id="iFoto" placeholder='foto' required />
                     </label>
 
                     <Sumbiter type="submit" value="entrar" />
-                    <a href="/cadastro">
-                        Não tem uma conta? Cadastre-se!
+                    <a href="/">
+                        Já tem uma conta? Faça login!
                     </a>
                 </FormBox>
             </LoginBox>
