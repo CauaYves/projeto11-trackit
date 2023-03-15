@@ -16,10 +16,9 @@ const NavBar = styled.nav`
 
     background: #126BA5;
 
-    padding: 0px 18px;
-    
     height: 70px;
-    width: 100%;
+    padding: 20px;
+    width: 100vw;
 
     display: flex;
     align-items: center;

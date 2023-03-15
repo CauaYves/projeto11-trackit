@@ -33,7 +33,9 @@ const TrackNav = styled.nav`
     }
     img{
         position: absolute;
-        top: -40%;
-        left: 38%;
+        bottom: -50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%)
     }
 `

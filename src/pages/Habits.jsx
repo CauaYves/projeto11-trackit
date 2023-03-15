@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import TrackBar from "../components/TrackBar"
+import InputHabitsContainer from "../components/InputHabitsContainer"
+import ToDo from "../components/ToDo"
 
 export default function Habitos() {
     return (
@@ -9,11 +11,20 @@ export default function Habitos() {
 
             <HabitsScreen>
                 <MyHabits>
-                    <h4>Meus hábitos</h4>
-                    <AddIcon>+</AddIcon>
+                    <div>
+                        <h4>Meus hábitos</h4>
+                        <AddIcon>+</AddIcon>
+                    </div>
                 </MyHabits>
+
+                <InputHabitsContainer />
+
+                <ToDo />
+
                 <UserHabits>
-                    <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+                    <div>
+                        <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+                    </div>
                 </UserHabits>
             </HabitsScreen>
 
@@ -21,21 +32,27 @@ export default function Habitos() {
         </>
     )
 }
-
 const HabitsScreen = styled.section`
     background: #E5E5E5;
-    height: 100vh;
-`
 
-const MyHabits = styled.div`
     width: 100%;
+    margin:70px 0px 0px 0px ;
+    height: 100vh;
+    padding: 20px;
+`
+const MyHabits = styled.div`
     height: 80px;
-
-    padding: 0px 17px;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    div{
+        width: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     & > h4:first-child{
         font-size: 22px; 
         color: #126BA5;
@@ -55,5 +72,11 @@ const AddIcon = styled.h4`
     color: white;
 `
 const UserHabits = styled.div`
-    padding: 17px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div{
+        width: 340px;
+    }
 `
