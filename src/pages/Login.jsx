@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import logo from "../img/logo-completa.svg"
 
 export default function Login() {
+
+    function login(){
+        
+    }
+
     return (
         <LoginContainer>
             <LoginBox>
@@ -11,14 +16,18 @@ export default function Login() {
 
                 <FormBox>
                     <label htmlFor="iName">
-                        <input type="email" id="iName" placeholder='email' />
+                        <input type="email" id="iName" placeholder='email' required/>
                     </label>
 
                     <label htmlFor="iPassword">
-                        <input type="password" id="iPassword" placeholder='senha' />
+                        <input type="password" id="iPassword" placeholder='senha' required minLength={4}/>
                     </label>
 
-                    <Sumbiter type="submit" value="entrar" />
+                    <Sumbiter 
+                        type="submit" 
+                        value="entrar" 
+                        onClick={() => login()}
+                    />
                     <a href="/cadastro">
                         Não tem uma conta? Cadastre-se!
                     </a>
@@ -50,14 +59,29 @@ const FormBox = styled.form`
         width: 300px;
         height: 45px;
         margin: 5px;
+        color: black;
 
         outline: 0;
         &:focus{
             border-color: lightblue;
         }
     }
+    
 `
 const Sumbiter = styled.input`
     padding-left: 40%;
-    background: #52B6FF;
+    background: #52B6FF; 
+    font-family: 'Lexend Deca';
+    box-sizing: border-box;
+    width: 200px;
+    height: 45px;
+    margin: 100px;
+
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: lightblue;
+        cursor: pointer;
+    }
 `
