@@ -47,7 +47,6 @@ export default function Login(props) {
 
                 <FormBox onSubmit={logon}>
 
-                    <label htmlFor="iName">
                         <input
                             data-test="email-input"
                             type="email"
@@ -56,10 +55,9 @@ export default function Login(props) {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={disabled}
                         />
-                    </label>
 
-                    <label htmlFor="iPassword">
                         <input
                             data-test="password-input"
                             type="password"
@@ -69,8 +67,9 @@ export default function Login(props) {
                             minLength={4}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            disabled={disabled}
+
                         />
-                    </label>
 
                     <Sumbiter
                         text="Entrar"
@@ -118,6 +117,9 @@ const FormBox = styled.form`
         outline: 0;
         &:focus{
             border-color: lightblue;
+        }
+        &:disabled{
+            background: #D4D4D4;
         }
     }
     

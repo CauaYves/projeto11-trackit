@@ -9,8 +9,6 @@ import { useState } from "react";
 
 function App() {
     console.log('xyza@gmail.com')
-    console.log('1234')
-    console.log('xyza')
 
     const [disabled, setDisabled] = useState(false)
 
