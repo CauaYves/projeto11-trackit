@@ -5,8 +5,9 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Sumbiter from "../components/Submiter"
 
-export default function Cadastro() {
+export default function Cadastro(props) {
 
+    const {disabled, setDisabled} = props
     const theme = useContext(ThemeContext)
     const navigate = useNavigate()
 
@@ -14,7 +15,6 @@ export default function Cadastro() {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
-    const [disabled, setDisabled] = useState(false)
 
     function register(e) {
 
@@ -34,10 +34,9 @@ export default function Cadastro() {
         }
 
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up'
-        const promise = axios.post(link, userObj)
-
-        promise.then((answer) => validateUser(answer))
-        promise.catch((answer) => alert(answer.response.data.message), setDisabled(false))
+        axios.post(link, userObj)
+        .then((answer) => validateUser(answer))
+        .catch((answer) => validateUser(answer))
 
     }
 
@@ -49,6 +48,8 @@ export default function Cadastro() {
 
             setDisabled(false)
             navigate('/')
+        }else{
+            alert(data.response.data.message)
         }
     }
 
@@ -112,7 +113,7 @@ export default function Cadastro() {
                         />
                     </label>
 
-                    <Sumbiter text="Cadastrar"/>
+                    <Sumbiter text="Cadastrar" disabled={disabled}/>
 
                     <Alink href="/">
                         Já tem uma conta? Faça login!
