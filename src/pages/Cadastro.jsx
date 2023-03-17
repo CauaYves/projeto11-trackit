@@ -36,7 +36,7 @@ export default function Cadastro(props) {
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up'
         axios.post(link, userObj)
         .then((answer) => validate(answer))
-        .catch((answer) => validate(answer))
+        .catch((error) => validate(error))
 
     }
 

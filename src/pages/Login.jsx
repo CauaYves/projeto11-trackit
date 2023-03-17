@@ -24,18 +24,17 @@ export default function Login(props) {
         }
         axios.post(link, obj)
         .then((answer) => loged(answer))
-        .catch((answer) => loged(answer))
+        .catch((error) => loged(error))
 
     }
 
     function loged(status) {
-        if (status === 'OK') {
+        if (status.statusText === 'OK') {
             navigate("/hoje")
         }else{
             alert(status.response.data.message)
-            setDisabled(false)
         }
-
+        setDisabled(false)
     }
 
     return (
