@@ -37,7 +37,7 @@ export default function Cadastro() {
         const promise = axios.post(link, userObj)
 
         promise.then((answer) => validateUser(answer))
-        promise.catch((answer) => alert(answer.response.data))
+        promise.catch((answer) => alert(answer.response.data.message), setDisabled(false))
 
     }
 
@@ -112,7 +112,7 @@ export default function Cadastro() {
                         />
                     </label>
 
-                    <Sumbiter />
+                    <Sumbiter/>
 
                     <Alink href="/">
                         Já tem uma conta? Faça login!
@@ -150,6 +150,9 @@ const FormBox = styled.form`
         outline: 0;
         &:focus{
             border-color: lightblue;
+        }
+        &:disabled{
+            background: #D4D4D4;
         }
     }
 `

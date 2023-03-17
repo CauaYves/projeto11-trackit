@@ -7,7 +7,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeContext } from "styled-components";
 
 function App() {
-
+    console.log('xyza@gmail.com')
+    console.log('1234')
+    console.log('xyza')
     return (
         <ThemeContext.Provider value={{email: '', password: '', userImg: ''}}>
             <BrowserRouter>

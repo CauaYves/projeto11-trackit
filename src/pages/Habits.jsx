@@ -13,7 +13,7 @@ export default function Habitos() {
                 <MyHabits>
                     <div>
                         <h4>Meus hábitos</h4>
-                        <AddIcon>+</AddIcon>
+                        <AddIcon data-test="create-btn">+</AddIcon>
                     </div>
                 </MyHabits>
 

@@ -18,7 +18,7 @@ export default function Login() {
 
         const promise = axios.post(link, obj)
         promise.then((answer) => console.log(answer))
-        promise.catch((answer) => console.log(answer.response.data))
+        promise.catch((answer) => console.log(answer))
 
     }
 
@@ -34,6 +34,7 @@ export default function Login() {
 
                     <label htmlFor="iName">
                         <input 
+                            data-test="email-input"
                             type="email" 
                             id="iName" 
                             placeholder='email' 
@@ -45,6 +46,7 @@ export default function Login() {
 
                     <label htmlFor="iPassword">
                         <input 
+                            data-test="password-input"
                             type="password" 
                             id="iPassword" 
                             placeholder='senha' 
@@ -55,9 +57,12 @@ export default function Login() {
                         />
                     </label>
 
-                    <Sumbiter />
+                    <Sumbiter/>
 
-                    <Redirecter href="/cadastro">
+                    <Redirecter 
+                        href="/cadastro"
+                        data-test="signup-link"
+                    >
                         Não tem uma conta? Cadastre-se!
                     </Redirecter>
 

@@ -3,7 +3,7 @@ import profilephototest from '../img/profilephototest.png'
 
 export default function Habitos() {
     return (
-        <NavBar>
+        <NavBar data-test="header">
             <p>Track It</p>
             <img src={profilephototest} alt="logo" />
         </NavBar>

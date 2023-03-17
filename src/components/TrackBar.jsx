@@ -3,12 +3,26 @@ import hoje from "../img/hoje.svg"
 
 export default function TrackBar(){
     return(
-        <TrackNav>
-            <a href="/habitos" >Hábitos</a>
+        <TrackNav data-test="menu">
+            <a 
+                href="/habitos"
+                data-test="habit-link"
+             >
+                Hábitos
+            </a>
 
-            <img src={hoje} alt="today"></img>
+            <img 
+                src={hoje} 
+                alt="today"
+                data-test="today-link"
+            />
 
-            <a href="/Histórico" >Histórico</a>
+            <a 
+                href="/Histórico"
+                data-test="history-link"
+            >
+                Histórico
+            </a>
         </TrackNav>
     )
 }

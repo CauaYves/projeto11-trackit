@@ -1,25 +1,26 @@
 import styled from "styled-components"
+import WeekBtn from "./WeekBtn"
 
 export default function InputHabitsContainer() {
     return (
-        <InputHabitsContainers>
+        <InputHabitsContainers data-test="habit-create-container">
             <InputHabits>
                 <label for="iName">
-                    <input type="text" id="iName" placeholder="nome do hábito" required />
+                    <input 
+                        type="text" 
+                        id="iName" 
+                        placeholder="nome do hábito" 
+                        required 
+                        data-test="habit-name-input"
+                    />
                 </label>
                 <ContainerBtns>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
-                    <WeekBtn>D</WeekBtn>
+                    <WeekBtn value="a"/>
                 </ContainerBtns>
                 <BtnsContainer>
                     <div>
-                        <button>Cancelar</button>
-                        <button>Salvar</button>
+                        <button data-test="habit-create-cancel-btn">Cancelar</button>
+                        <button data-test="habit-create-save-btn">Salvar</button>
                     </div>
                 </BtnsContainer>
             </InputHabits>
@@ -80,19 +81,5 @@ const BtnsContainer = styled.div`
             background: #52B6FF;
             color: white;
         }
-    }
-`
-const WeekBtn = styled.button`
-    margin: 2px;
-
-    height: 30px;
-    width: 30px;
-
-    border: 1px solid #D4D4D4;
-    border-radius: 5px;
-
-    color: #D4D4D4;
-    &:hover{
-        opacity: 0.7;
     }
 `
