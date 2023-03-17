@@ -5,14 +5,11 @@ import Hoje from "./pages/Hoje"
 import Historico from "./pages/Historico";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeContext } from "styled-components";
-import { useContext } from "react";
 
 function App() {
 
-    const theme = useContext(ThemeContext)
-
     return (
-        <ThemeContext.Provider value={theme}>
+        <ThemeContext.Provider value={{email: '', password: '', userImg: ''}}>
             <BrowserRouter>
 
                 <Routes>

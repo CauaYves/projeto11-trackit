@@ -1,13 +1,15 @@
-import styled from "styled-components"
+import styled, { ThemeContext } from "styled-components"
 import logo from '../img/logo.png'
-import { useState } from "react"
-import { ThreeDots } from "react-loader-spinner"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Sumbiter from "../components/Submiter"
 
 export default function Cadastro() {
-    
+
+    const theme = useContext(ThemeContext)
     const navigate = useNavigate()
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
@@ -33,25 +35,21 @@ export default function Cadastro() {
 
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up'
         const promise = axios.post(link, userObj)
-        promise.then((answer) => navigate('/'))
+
+        promise.then((answer) => validateUser(answer))
         promise.catch((answer) => alert(answer.response.data))
 
     }
 
-    function enterImg(input) {
-        setImage(input)
-    }
+    function validateUser(data){
+        if(data.statusText === "Created"){
+            theme.email = data.data.email
+            theme.password = data.data.password
+            theme.userImg = data.data.image
 
-    function enterName(input) {
-        setName(input)
-    }
-
-    function enterPass(input) {
-        setPassword(input)
-    }
-
-    function enterEmail(input) {
-        setEmail(input)
+            setDisabled(false)
+            navigate('/')
+        }
     }
 
     return (
@@ -69,7 +67,7 @@ export default function Cadastro() {
                             placeholder='email'
                             required
                             value={email}
-                            onChange={(e) => enterEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             disabled={disabled}
 
                         />
@@ -83,7 +81,7 @@ export default function Cadastro() {
                             minLength={4}
                             required
                             value={password}
-                            onChange={(e) => enterPass(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
                             disabled={disabled}
 
                         />
@@ -96,7 +94,7 @@ export default function Cadastro() {
                             placeholder='nome'
                             required
                             value={name}
-                            onChange={(e) => enterName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             disabled={disabled}
 
                         />
@@ -109,20 +107,12 @@ export default function Cadastro() {
                             placeholder='foto'
                             required
                             value={image}
-                            onChange={(e) => enterImg(e.target.value)}
+                            onChange={(e) => setImage(e.target.value)}
                             disabled={disabled}
-
                         />
                     </label>
 
-                    <Sumbiter
-                        type="submit"
-                        value="entrar"
-                        disabled={disabled}
-                    >
-                        {disabled ? <ThreeDots color="white" height={30} width={90} /> : 'Cadastrar'}
-                    </Sumbiter>
-
+                    <Sumbiter />
 
                     <Alink href="/">
                         Já tem uma conta? Faça login!
@@ -161,23 +151,6 @@ const FormBox = styled.form`
         &:focus{
             border-color: lightblue;
         }
-    }
-`
-const Sumbiter = styled.button`
-    font-size: 20px;
-    width: 303px;
-    height:45px;
-    border-radius: 5px;
-    color: white;
-    border:none;
-    background: #52B6FF;
-    margin-bottom: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:disabled{
-        opacity: .7;
     }
 `
 const Alink = styled.a`
