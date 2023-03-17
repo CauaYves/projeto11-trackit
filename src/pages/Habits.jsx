@@ -5,6 +5,7 @@ import InputHabitsContainer from "../components/InputHabitsContainer"
 import ToDo from "../components/ToDo"
 
 export default function Habitos() {
+
     return (
         <>
             <NavBar />

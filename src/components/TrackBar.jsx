@@ -18,7 +18,7 @@ export default function TrackBar(){
             />
 
             <a 
-                href="/Histórico"
+                href="/historico"
                 data-test="history-link"
             >
                 Histórico

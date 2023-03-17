@@ -1,12 +1,14 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 import logo from "../img/logo-completa.svg"
 import Sumbiter from '../components/Submiter'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import UserContext from "../context/ContextApi"
 
 export default function Login(props) {
+
+    const {image, setImage} = useContext(UserContext)
 
     const {disabled, setDisabled} = props
     const navigate = useNavigate()
@@ -30,6 +32,7 @@ export default function Login(props) {
 
     function loged(status) {
         if (status.statusText === 'OK') {
+            setImage(status.data.image)
             navigate("/hoje")
         }else{
             alert(status.response.data.message)
@@ -68,7 +71,6 @@ export default function Login(props) {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             disabled={disabled}
-
                         />
 
                     <Sumbiter

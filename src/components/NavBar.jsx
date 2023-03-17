@@ -1,11 +1,16 @@
 import styled from "styled-components"
 import profilephototest from '../img/profilephototest.png'
+import ContextApi from "../context/ContextApi"
+import { useContext } from "react"
 
 export default function Habitos() {
+
+    const {image} = useContext(ContextApi)
+
     return (
         <NavBar data-test="header">
             <p>Track It</p>
-            <img src={profilephototest} alt="logo" />
+            <img src={image} alt="logo" />
         </NavBar>
     )
 }

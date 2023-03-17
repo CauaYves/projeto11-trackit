@@ -4,6 +4,7 @@ import TrackBar from "../components/TrackBar"
 import Task from "../components/Task"
 
 export default function Hoje() {
+
     return (
         <TodayContainer>
             <NavBar />

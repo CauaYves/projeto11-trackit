@@ -4,16 +4,17 @@ import Login from "./pages/Login";
 import Hoje from "./pages/Hoje"
 import Historico from "./pages/Historico";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ThemeContext } from "styled-components";
 import { useState } from "react";
+import UserContext from './context/ContextApi'
 
 function App() {
     console.log('xyza@gmail.com')
 
     const [disabled, setDisabled] = useState(false)
+    const [image, setImage] = useState('')
 
     return (
-        <ThemeContext.Provider value={{email: '', password: '', userImg: '',}}>
+        <UserContext.Provider value={{image: image, setImage: setImage}}>
             <BrowserRouter>
 
                 <Routes>
@@ -44,7 +45,7 @@ function App() {
                 </Routes>
 
             </BrowserRouter>
-        </ThemeContext.Provider>
+        </UserContext.Provider>
     )
 }
 

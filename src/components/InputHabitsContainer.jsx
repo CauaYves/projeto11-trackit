@@ -5,7 +5,7 @@ export default function InputHabitsContainer() {
     return (
         <InputHabitsContainers data-test="habit-create-container">
             <InputHabits>
-                <label for="iName">
+                <label htmlFor="iName">
                     <input 
                         type="text" 
                         id="iName" 
