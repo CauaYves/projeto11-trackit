@@ -35,22 +35,23 @@ export default function Cadastro(props) {
 
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up'
         axios.post(link, userObj)
-        .then((answer) => validateUser(answer))
-        .catch((answer) => validateUser(answer))
+        .then((answer) => validate(answer))
+        .catch((answer) => validate(answer))
 
     }
 
-    function validateUser(data){
+    function validate(data){
         if(data.statusText === "Created"){
+
             theme.email = data.data.email
             theme.password = data.data.password
             theme.userImg = data.data.image
 
-            setDisabled(false)
             navigate('/')
         }else{
             alert(data.response.data.message)
         }
+        setDisabled(false)
     }
 
     return (
@@ -113,7 +114,10 @@ export default function Cadastro(props) {
                         />
                     </label>
 
-                    <Sumbiter text="Cadastrar" disabled={disabled}/>
+                    <Sumbiter 
+                        text="Cadastrar" 
+                        disabled={disabled}
+                    />
 
                     <Alink href="/">
                         Já tem uma conta? Faça login!
