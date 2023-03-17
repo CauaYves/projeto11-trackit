@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import profilephototest from '../img/profilephototest.png'
 import ContextApi from "../context/ContextApi"
 import { useContext } from "react"
 
