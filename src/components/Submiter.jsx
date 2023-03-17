@@ -1,11 +1,9 @@
 import styled from "styled-components"
 import { ThreeDots } from "react-loader-spinner"
-import { useState } from "react"
-import Cadastro from "../pages/Cadastro"
 
-export default function Sumbiter() {
-    
-    const [disabled] = useState(false)
+export default function Sumbiter(props) {
+
+    const {text, disabled} = props
 
     return (
         <Sumbiters
@@ -14,7 +12,7 @@ export default function Sumbiter() {
             value="entrar"
             disabled={disabled}
         >
-            {disabled ? <ThreeDots color="white" height={30} width={90} /> : 'Cadastrar' }
+            {disabled ? <ThreeDots color="white" height={30} width={90} /> : text }
         </Sumbiters>
     )
 }

@@ -5,24 +5,28 @@ import Hoje from "./pages/Hoje"
 import Historico from "./pages/Historico";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeContext } from "styled-components";
+import { useState } from "react";
 
 function App() {
     console.log('xyza@gmail.com')
     console.log('1234')
     console.log('xyza')
+
+    const [disabled, setDisabled] = useState(false)
+
     return (
-        <ThemeContext.Provider value={{email: '', password: '', userImg: ''}}>
+        <ThemeContext.Provider value={{email: '', password: '', userImg: '',}}>
             <BrowserRouter>
 
                 <Routes>
                     <Route 
                         path="/" 
-                        element={ <Login /> }>    
+                        element={ <Login disabled={disabled} setDisabled={setDisabled} /> }>    
                     </Route>
 
                     <Route 
                         path="/cadastro" 
-                        element={ <Cadastro /> }>     
+                        element={ <Cadastro disabled={disabled} setDisabled={setDisabled}/> }>     
                     </Route>
 
                     <Route 

@@ -112,7 +112,7 @@ export default function Cadastro() {
                         />
                     </label>
 
-                    <Sumbiter/>
+                    <Sumbiter text="Cadastrar"/>
 
                     <Alink href="/">
                         Já tem uma conta? Faça login!
