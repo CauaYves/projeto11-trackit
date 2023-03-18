@@ -8,9 +8,9 @@ import UserContext from "../context/ContextApi"
 
 export default function Login(props) {
 
-    const {image, setImage} = useContext(UserContext)
+    const { setImage, disabled, setDisabled } = useContext(UserContext)
+    
 
-    const {disabled, setDisabled} = props
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

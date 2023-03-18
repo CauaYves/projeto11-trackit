@@ -4,20 +4,14 @@ import { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Sumbiter from "../components/Submiter"
+import ContextApi from "../context/ContextApi"
 
-export default function Cadastro(props) {
+export default function Cadastro() {
 
-    const {disabled, setDisabled} = props
-    const theme = useContext(ThemeContext)
+    const {disabled, email, image, name, password, setDisabled, setEmail, setImage, setName, setPassword } = useContext(ContextApi)
     const navigate = useNavigate()
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [name, setName] = useState('')
-    const [image, setImage] = useState('')
-
     function register(e) {
-
         e.preventDefault()
         setDisabled(true)
 
@@ -35,22 +29,22 @@ export default function Cadastro(props) {
 
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up'
         axios.post(link, userObj)
-        .then((answer) => validate(answer))
-        .catch((error) => validate(error))
+            .then((answer) => validate(answer))
+            .catch((error) => takeError(error))
 
     }
 
-    function validate(data){
-        if(data.statusText === "Created"){
+    function validate(answer) {
+        setEmail(answer.data.email)
+        setPassword(answer.data.password)
+        setImage(answer.data.image)
 
-            theme.email = data.data.email
-            theme.password = data.data.password
-            theme.userImg = data.data.image
+        navigate('/')
+        setDisabled(false)
+    }
 
-            navigate('/')
-        }else{
-            alert(data.response.data.message)
-        }
+    function takeError(error){
+        alert(error.response.data.message)
         setDisabled(false)
     }
 
@@ -114,8 +108,8 @@ export default function Cadastro(props) {
                         />
                     </label>
 
-                    <Sumbiter 
-                        text="Cadastrar" 
+                    <Sumbiter
+                        text="Cadastrar"
                         disabled={disabled}
                     />
 
