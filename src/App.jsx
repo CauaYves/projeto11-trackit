@@ -11,20 +11,26 @@ function App() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [token, setToken] = useState(undefined)
+    const [habits, setHabits] = useState([])
 
     return (
         <UserContext.Provider value={
             {
             image: image,
-            setImage: setImage,
+                setImage: setImage,
             disabled: disabled,
-            setDisabled: setDisabled,
+                setDisabled: setDisabled,
             email: email,
-            setEmail: setEmail,
+                setEmail: setEmail,
             password: password,
-            setPassword: setPassword,
+                setPassword: setPassword,
             name: name,
-            setName: setName,
+                setName: setName,
+            token: token,
+                setToken: setToken,
+            habits: habits,
+                setHabits: setHabits,
             }
         }>
             <BrowserRouter>

@@ -2,8 +2,28 @@ import NavBar from "../components/NavBar"
 import styled from "styled-components"
 import TrackBar from "../components/TrackBar"
 import Task from "../components/Task"
+import { useContext, useEffect, useState } from "react"
+import ContextApi from "../context/ContextApi"
+import axios from "axios"
 
 export default function Hoje() {
+
+    const {token, habits, setHabits} = useContext(ContextApi)
+        console.log(habits)
+    useEffect(() => {
+        const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today'
+        axios.get(link, {
+            headers: {
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then(response => {
+            setHabits(response.data)
+        })
+        .catch(error => {
+            alert(error)
+        })
+    }, [])
 
     return (
         <TodayContainer>
@@ -15,9 +35,14 @@ export default function Hoje() {
                     <h6>nenhum hábito concluido ainda</h6>
                 </StatusHabits>
                 <TaskContainer>
-                    <Task />
-                    <Task />
-                    <Task />
+                    
+                    {habits.map((h) => <Task 
+                        key={h.id}
+                        name={h.name} 
+                        done={false} 
+                        sequence={h.currentSequence} 
+                        highestSequence={h.highestSequence}/>
+                     )}
 
                 </TaskContainer>
 

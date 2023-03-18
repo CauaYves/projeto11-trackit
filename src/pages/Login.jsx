@@ -8,8 +8,8 @@ import UserContext from "../context/ContextApi"
 
 export default function Login(props) {
 
-    const { setImage, disabled, setDisabled } = useContext(UserContext)
-    
+    const { setImage, disabled, setDisabled, setToken } = useContext(UserContext)
+
 
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
@@ -25,19 +25,21 @@ export default function Login(props) {
             password: password
         }
         axios.post(link, obj)
-        .then((answer) => loged(answer))
-        .catch((error) => loged(error))
+            .then((answer) => loged(answer))
+            .catch((error) => takeError(error))
 
     }
 
-    function loged(status) {
-        if (status.statusText === 'OK') {
-            setImage(status.data.image)
-            navigate("/hoje")
-        }else{
-            alert(status.response.data.message)
-        }
+    function takeError(error) {
+        alert(error.response.data.message)
         setDisabled(false)
+    }
+
+    function loged(status) {
+        setImage(status.data.image)
+        setToken(status.data.token)
+        setDisabled(false)
+        navigate("/hoje")
     }
 
     return (
@@ -50,28 +52,28 @@ export default function Login(props) {
 
                 <FormBox onSubmit={logon}>
 
-                        <input
-                            data-test="email-input"
-                            type="email"
-                            id="iName"
-                            placeholder='email'
-                            required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            disabled={disabled}
-                        />
+                    <input
+                        data-test="email-input"
+                        type="email"
+                        id="iName"
+                        placeholder='email'
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={disabled}
+                    />
 
-                        <input
-                            data-test="password-input"
-                            type="password"
-                            id="iPassword"
-                            placeholder='senha'
-                            required
-                            minLength={4}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            disabled={disabled}
-                        />
+                    <input
+                        data-test="password-input"
+                        type="password"
+                        id="iPassword"
+                        placeholder='senha'
+                        required
+                        minLength={4}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        disabled={disabled}
+                    />
 
                     <Sumbiter
                         text="Entrar"

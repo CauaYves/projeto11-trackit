@@ -1,13 +1,16 @@
 import styled from "styled-components"
 import check from '../img/check.svg'
 
-export default function Task() {
+export default function Task(props) {
+
+    const {name, done, sequence, highestSequence} = props
+
     return (
         <Tasks>
             <StatusTask>
-                <h1>Ler 1 capítulo de livro</h1>
-                <p>Sequência atual: 3 dias</p>
-                <p>Seu recorde: 5 dias</p>
+                <h1>{name}</h1>
+                <p>Sequência atual: {sequence} dias</p>
+                <p>Seu recorde: {highestSequence} dias</p>
             </StatusTask>
             <CheckBox>
                 <img src={check} alt="check"/>
