@@ -1,7 +1,11 @@
 import styled from "styled-components"
-import WeekBtn from "./WeekBtn"
+import { useState } from "react"
 
 export default function InputHabitsContainer() {
+
+    const weekDays = ['s', 'm', 't', 's', 'w', 't', 'f']
+    const [habitName, setHabitName] = useState('')
+
     return (
         <InputHabitsContainers data-test="habit-create-container">
             <InputHabits>
@@ -12,11 +16,17 @@ export default function InputHabitsContainer() {
                         placeholder="nome do hábito" 
                         required 
                         data-test="habit-name-input"
+                        onChange={(e) => setHabitName(e.target.value)}
+                        value={habitName}
                     />
                 </label>
                 <ContainerBtns>
-                    <WeekBtn value="a"/>
-                </ContainerBtns>
+
+                {weekDays.map((day, i) => {
+                    return <WeekBtns key={i}>{day}</WeekBtns>
+                })}
+
+                </ContainerBtns> 
                 <BtnsContainer>
                     <div>
                         <button data-test="habit-create-cancel-btn">Cancelar</button>
@@ -43,6 +53,7 @@ const InputHabits = styled.div`
     background: white;
 
     input{
+        color: black;
         width: calc(100% - 40px);
         height: 45px;
 
@@ -81,5 +92,19 @@ const BtnsContainer = styled.div`
             background: #52B6FF;
             color: white;
         }
+    }
+`
+const WeekBtns = styled.button`
+    margin: 2px;
+
+    height: 30px;
+    width: 30px;
+
+    border: 1px solid #D4D4D4;
+    border-radius: 5px;
+
+    color: #D4D4D4;
+    &:hover{
+        opacity: 0.7;
     }
 `

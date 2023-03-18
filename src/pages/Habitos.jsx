@@ -3,23 +3,35 @@ import NavBar from "../components/NavBar"
 import TrackBar from "../components/TrackBar"
 import InputHabitsContainer from "../components/InputHabitsContainer"
 import ToDo from "../components/ToDo"
+import { useContext, useState } from "react"
+import ContextApi from "../context/ContextApi"
 
 export default function Habitos() {
+
+    const [isCreating, setIsCreating] = useState(false)
+    const {image, disabled, habits, setHabits} = useContext(ContextApi)
+    function createHabit() {
+        setIsCreating(true)
+    }
 
     return (
         <>
             <NavBar />
 
             <HabitsScreen>
+
                 <MyHabits>
                     <div>
                         <h4>Meus hábitos</h4>
-                        <AddIcon data-test="create-btn">+</AddIcon>
+                        <AddIcon 
+                            data-test="create-btn"
+                            onClick={ () => createHabit()}
+                        >+</AddIcon>
                     </div>
                 </MyHabits>
-
-                <InputHabitsContainer />
-
+                
+                {isCreating? <InputHabitsContainer /> : ''}
+                 
                 <ToDo />
 
                 <UserHabits>

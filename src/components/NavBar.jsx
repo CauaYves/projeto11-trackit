@@ -2,19 +2,19 @@ import styled from "styled-components"
 import ContextApi from "../context/ContextApi"
 import { useContext } from "react"
 
-export default function Habitos() {
+export default function NavBar() {
 
     const {image} = useContext(ContextApi)
 
     return (
-        <NavBar data-test="header">
+        <NavBars data-test="header">
             <p>Track It</p>
             <img src={image} alt="logo" />
-        </NavBar>
+        </NavBars>
     )
 }
 
-const NavBar = styled.nav`
+const NavBars = styled.nav`
     position: fixed;
     top: 0;
 

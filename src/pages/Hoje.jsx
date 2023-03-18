@@ -56,7 +56,6 @@ export default function Hoje() {
 }
 
 const TodayContainer = styled.section`
-
 `
 const TodayScreen = styled.div`
     background: #E5E5E5;

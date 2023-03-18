@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
-import Habitos from "./components/NavBar";
+import Habitos from "./pages/Habitos";
 import Historico from "./pages/Historico";
 import Hoje from "./pages/Hoje";
 
