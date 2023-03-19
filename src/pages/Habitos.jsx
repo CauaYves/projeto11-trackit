@@ -10,10 +10,11 @@ export default function Habitos() {
 
     const [isCreating, setIsCreating] = useState(false)
     const {image, disabled, habits, setHabits} = useContext(ContextApi)
+
     function createHabit() {
         setIsCreating(true)
     }
-
+    console.log(habits)
     return (
         <>
             <NavBar />

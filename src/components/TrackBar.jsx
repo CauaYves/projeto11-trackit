@@ -1,23 +1,39 @@
 import styled from "styled-components"
 import hoje from "../img/hoje.svg"
+import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-export default function TrackBar(){
-    return(
+
+export default function TrackBar() {
+
+    return (
         <TrackNav data-test="menu">
-            <a 
+            <a
                 href="/habitos"
                 data-test="habit-link"
-             >
+            >
                 Hábitos
             </a>
 
-            <img 
-                src={hoje} 
-                alt="today"
-                data-test="today-link"
-            />
+                <CircularContainer>
+                    <CircularProgressbar
+                        value={1}
+                        text={`Hoje`}
+                        styles={buildStyles({
+                            width: '200px',
+                            height: '200px',
+                            rotation: 1,
+                            textSize: '16px',
+                            pathTransitionDuration: 0.5,
+                            pathColor: `white`,
+                            textColor: 'white',
+                            trailColor: '#52B6FF',
+                        })}
+                    />
+                </CircularContainer>
 
-            <a 
+
+            <a
                 href="/historico"
                 data-test="history-link"
             >
@@ -26,6 +42,13 @@ export default function TrackBar(){
         </TrackNav>
     )
 }
+const CircularContainer = styled.div`
+    background: #52B6FF;
+
+    border-radius: 50%;
+    width: 140px;
+    margin-bottom: 90px;
+`
 
 const TrackNav = styled.nav`
     background: white;

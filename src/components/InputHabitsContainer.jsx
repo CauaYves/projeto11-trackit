@@ -1,10 +1,30 @@
 import styled from "styled-components"
 import { useState } from "react"
-
 export default function InputHabitsContainer() {
 
-    const weekDays = ['s', 'm', 't', 's', 'w', 't', 'f']
+    const weekDays = {
+        s: { name: 'Domingo', isWeekend: true },
+        m: { name: 'Segunda', isWeekend: false },
+        t: { name: 'Terça', isWeekend: false },
+        w: { name: 'Quarta', isWeekend: false },
+        r: { name: 'Quinta', isWeekend: false },
+        f: { name: 'Sexta', isWeekend: false },
+        y: { name: 'Sábado', isWeekend: true }
+    }
+
     const [habitName, setHabitName] = useState('')
+    const [days, setDays] = useState({})
+
+    function addDay(day, position){
+
+        if (day in days && position in days) {
+            return
+        } else {
+            setDays({ ...days, [day]: { name: weekDays[day].name, position: position, isWeekend: weekDays[day].isWeekend }})
+        }
+    }
+    console.log(days)
+
 
     return (
         <InputHabitsContainers data-test="habit-create-container">
@@ -22,8 +42,12 @@ export default function InputHabitsContainer() {
                 </label>
                 <ContainerBtns>
 
-                {weekDays.map((day, i) => {
-                    return <WeekBtns key={i}>{day}</WeekBtns>
+                {Object.keys(weekDays).map((day, i) => {
+                    return <WeekBtns 
+                        onClick={() => addDay(day, i)}
+                        key={i}>
+                            {weekDays[day].name[0]}
+                    </WeekBtns>
                 })}
 
                 </ContainerBtns> 
@@ -37,6 +61,7 @@ export default function InputHabitsContainer() {
         </InputHabitsContainers>
     )
 }
+
 const InputHabitsContainers = styled.div`
     width: 100%;
 
@@ -103,6 +128,7 @@ const WeekBtns = styled.button`
     border: 1px solid #D4D4D4;
     border-radius: 5px;
 
+    background: ;
     color: #D4D4D4;
     &:hover{
         opacity: 0.7;

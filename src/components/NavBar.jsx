@@ -9,7 +9,7 @@ export default function NavBar() {
     return (
         <NavBars data-test="header">
             <p>Track It</p>
-            <img src={image} alt="logo" />
+            <UserPhoto src={image} alt="logo" />
         </NavBars>
     )
 }
@@ -37,4 +37,11 @@ const NavBars = styled.nav`
     img{
         width: 51px;
     }
+`
+const UserPhoto = styled.img`
+    height: 50px;
+    width: 50px;
+
+    border-radius: 50%;
+    background: white;
 `
