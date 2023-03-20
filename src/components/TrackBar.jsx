@@ -20,8 +20,6 @@ export default function TrackBar() {
                         value={1}
                         text={`Hoje`}
                         styles={buildStyles({
-                            width: '200px',
-                            height: '200px',
                             rotation: 1,
                             textSize: '16px',
                             pathTransitionDuration: 0.5,
@@ -46,8 +44,8 @@ const CircularContainer = styled.div`
     background: #52B6FF;
 
     border-radius: 50%;
-    width: 140px;
-    margin-bottom: 90px;
+    width: 91px;
+    margin-bottom: 60px;
 `
 
 const TrackNav = styled.nav`

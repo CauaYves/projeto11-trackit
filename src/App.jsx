@@ -13,6 +13,9 @@ function App() {
     const [name, setName] = useState('')
     const [token, setToken] = useState(undefined)
     const [habits, setHabits] = useState([])
+    const [habitName, setHabitName] = useState('')
+    const [days, setDays] = useState([])
+
 
     return (
         <UserContext.Provider value={
@@ -31,6 +34,10 @@ function App() {
                 setToken: setToken,
             habits: habits,
                 setHabits: setHabits,
+            habitName: habitName,
+                setHabitName: setHabitName,
+            days: days,
+                setDays: setDays,
             }
         }>
             <BrowserRouter>

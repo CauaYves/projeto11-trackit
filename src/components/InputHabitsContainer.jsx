@@ -1,40 +1,55 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useContext } from "react"
+import ContextApi from "../context/ContextApi"
+import axios from "axios"
+
 export default function InputHabitsContainer() {
 
-    const weekDays = {
-        s: { name: 'Domingo', isWeekend: true },
-        m: { name: 'Segunda', isWeekend: false },
-        t: { name: 'Terça', isWeekend: false },
-        w: { name: 'Quarta', isWeekend: false },
-        r: { name: 'Quinta', isWeekend: false },
-        f: { name: 'Sexta', isWeekend: false },
-        y: { name: 'Sábado', isWeekend: true }
-    }
+    const { habitName, setHabitName, days, setDays } = useContext(ContextApi)
 
-    const [habitName, setHabitName] = useState('')
-    const [days, setDays] = useState({})
+    const weekDays = [
+        'Domingo',
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+    ]
 
-    function addDay(day, position){
-
-        if (day in days && position in days) {
+    function addDay(day){
+        if (days.includes(day)) {
             return
-        } else {
-            setDays({ ...days, [day]: { name: weekDays[day].name, position: position, isWeekend: weekDays[day].isWeekend }})
         }
+        setDays([...days, day])
     }
-    console.log(days)
+
+    function createHabit(day) {
+        const token = '' //Anexar token para continuar a função.
+        const data = {
+            name: habitName,
+            days: days,
+        }
+        const url = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits'
+        axios.post(url, data, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            },
+          })
+       .then((answer) => console.log(answer))
+       .catch((error) => console.log(error))
+    }
 
 
     return (
         <InputHabitsContainers data-test="habit-create-container">
             <InputHabits>
                 <label htmlFor="iName">
-                    <input 
-                        type="text" 
-                        id="iName" 
-                        placeholder="nome do hábito" 
-                        required 
+                    <input
+                        type="text"
+                        id="iName"
+                        placeholder="nome do hábito"
+                        required
                         data-test="habit-name-input"
                         onChange={(e) => setHabitName(e.target.value)}
                         value={habitName}
@@ -42,19 +57,22 @@ export default function InputHabitsContainer() {
                 </label>
                 <ContainerBtns>
 
-                {Object.keys(weekDays).map((day, i) => {
-                    return <WeekBtns 
-                        onClick={() => addDay(day, i)}
-                        key={i}>
-                            {weekDays[day].name[0]}
-                    </WeekBtns>
-                })}
+                    {weekDays.map((day, index) => {
+                        return <WeekBtns
+                            key={index}
+                            onClick={() => addDay(index)}
+                        >{day[0]}
+                        </WeekBtns>
+                    })}
 
-                </ContainerBtns> 
+                </ContainerBtns>
                 <BtnsContainer>
                     <div>
                         <button data-test="habit-create-cancel-btn">Cancelar</button>
-                        <button data-test="habit-create-save-btn">Salvar</button>
+                        <button
+                            data-test="habit-create-save-btn"
+                            onClick={() => createHabit()}
+                        >Salvar</button>
                     </div>
                 </BtnsContainer>
             </InputHabits>

@@ -3,18 +3,19 @@ import NavBar from "../components/NavBar"
 import TrackBar from "../components/TrackBar"
 import InputHabitsContainer from "../components/InputHabitsContainer"
 import ToDo from "../components/ToDo"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ContextApi from "../context/ContextApi"
+import axios from "axios"
 
 export default function Habitos() {
 
     const [isCreating, setIsCreating] = useState(false)
-    const {image, disabled, habits, setHabits} = useContext(ContextApi)
+    const {image, disabled, habits, setHabits, habitName, days} = useContext(ContextApi)
 
     function createHabit() {
         setIsCreating(true)
     }
-    console.log(habits)
+
     return (
         <>
             <NavBar />
@@ -33,7 +34,7 @@ export default function Habitos() {
                 
                 {isCreating? <InputHabitsContainer /> : ''}
                  
-                <ToDo />
+                {/* <ToDo /> */}
 
                 <UserHabits>
                     <div>

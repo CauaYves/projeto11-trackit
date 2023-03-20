@@ -9,7 +9,7 @@ import axios from "axios"
 export default function Hoje() {
 
     const {token, habits, setHabits} = useContext(ContextApi)
-        console.log(habits)
+
     useEffect(() => {
         const link = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today'
         axios.get(link, {
